@@ -1,38 +1,33 @@
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const ip = request.headers.get("cf-connecting-ip") || "Unknown";
+    const corsHeaders = {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+    };
 
-    // --- SECURE REGISTRATION LOGIC ---
+    if (request.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
+
     if (url.pathname === "/api/register" && request.method === "POST") {
       const { email } = await request.json();
+      
+      // Create a unique "Member Key" based on their email
+      const memberKey = btoa(email).substring(0, 8).toUpperCase();
 
-      // 1. Save user as "Not Verified" in your D1 Database
+      // Save to Database so we know they are a real member
       await env.DB.prepare(
-        "INSERT OR IGNORE INTO users (email) VALUES (?)"
+        "INSERT OR IGNORE INTO users (email, is_verified) VALUES (?, 1)"
       ).bind(email).run();
 
-      // 2. Send the Verification Email using your Secret Key
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${env.RESEND_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: "Salon Nilmee <onboarding@resend.dev>",
-          to: [email],
-          subject: "Verify your Salon Nilmee Account",
-          html: "<strong>Welcome!</strong> Click <a href='#'>here</a> to verify."
-        }),
+      return new Response(JSON.stringify({ 
+        message: "Access Granted", 
+        key: memberKey 
+      }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" }
       });
-
-      return new Response(JSON.stringify({ message: "Verification Email Sent!" }));
     }
 
-    // --- RECORD VISITOR (SILENT) ---
-    await env.DB.prepare("INSERT INTO visitors (ip) VALUES (?)").bind(ip).run();
-    
-    return new Response("Salon Nilmee API Active", { status: 200 });
+    return new Response("API Active", { headers: corsHeaders });
   }
 };

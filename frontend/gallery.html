@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Nilmee | The Collection</title>
+    <style>
+        :root { --gold: #d4af37; --black: #0a0a0a; }
+        body { background: var(--black); color: white; font-family: 'Playfair Display', serif; margin: 0; padding: 20px; }
+        header { text-align: center; padding: 50px 0; border-bottom: 1px solid var(--gold); margin-bottom: 40px; }
+        h1 { color: var(--gold); letter-spacing: 8px; text-transform: uppercase; font-weight: 300; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .item {
+            border: 1px solid #222;
+            padding: 10px;
+            background: #111;
+            transition: border 0.3s;
+        }
+        .item:hover { border: 1px solid var(--gold); }
+        .img-placeholder {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            font-size: 0.8rem;
+        }
+        .desc { padding: 15px 0; text-align: center; font-size: 0.9rem; letter-spacing: 2px; color: var(--gold); }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The Collection</h1>
+        <p>EXCLUSIVE DESIGN PORTFOLIO</p>
+    </header>
+
+    <div class="gallery-grid">
+        <div class="item">
+            <div class="img-placeholder">IMAGE 01</div>
+            <div class="desc">BRIDAL LUXE</div>
+        </div>
+        <div class="item">
+            <div class="img-placeholder">IMAGE 02</div>
+            <div class="desc">SIGNATURE CUT</div>
+        </div>
+        <div class="item">
+            <div class="img-placeholder">IMAGE 03</div>
+            <div class="desc">GLAMOUR RADIANCE</div>
+        </div>
+    </div>
+</body>
+</html>
