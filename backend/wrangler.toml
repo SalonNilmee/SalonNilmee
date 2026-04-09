@@ -1,0 +1,8 @@
+name = "salon-backend"
+main = "src/index.ts"
+compatibility_date = "2024-04-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "salon-db"
+database_id = "46e4eb35-d598-44ba-9f9c-4e629642cdb8"
