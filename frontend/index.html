@@ -1,1 +1,131 @@
-<h1>Salon Nilmee - Secure Site Coming Soon</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Nilmee | Luxury Experience</title>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --black: #0a0a0a;
+            --gray: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--black);
+            color: white;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* The Gold Border "Fortress" Box */
+        .card {
+            background-color: var(--gray);
+            border: 1px solid var(--gold);
+            padding: 3rem;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 400px;
+            width: 90%;
+            transition: transform 0.3s ease;
+        }
+
+        h1 {
+            color: var(--gold);
+            letter-spacing: 0.5rem;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1rem;
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #444;
+            color: white;
+            padding: 0.8rem;
+            width: 100%;
+            margin-bottom: 1.5rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-bottom: 1px solid var(--gold);
+        }
+
+        button {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.8rem 2rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        #status {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Nilmee</h1>
+        <p>MEMBERS EXCLUSIVE ACCESS</p>
+        
+        <input type="email" id="email" placeholder="ENTER YOUR EMAIL" required>
+        <button onclick="register()">Request Access</button>
+        
+        <div id="status"></div>
+    </div>
+
+    <script>
+        async function register() {
+            const email = document.getElementById('email').value;
+            const status = document.getElementById('status');
+            
+            status.innerText = "Verifying Identity...";
+            
+            try {
+                // Replace this URL with your actual Worker URL from npx wrangler deploy
+                const response = await fetch('https://salon-backend.salonnilmi.workers.dev/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email })
+                });
+
+                if (response.ok) {
+                    status.style.color = "#d4af37";
+                    status.innerText = "Access Link Sent to your Email.";
+                } else {
+                    status.innerText = "Error. Please try again later.";
+                }
+            } catch (err) {
+                status.innerText = "Security Connection Failed.";
+            }
+        }
+    </script>
+</body>
+</html>
