@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "alon--ite",
+  "name": "salonnilmee",
   "main": "index.js", // This tells Wrangler to use your backend script
   "compatibility_date": "2026-04-09",
   "observability": {
