@@ -1,6 +1,9 @@
-name = "salon-backend"
-main = "src/index.ts"
+name = "beauty"
+main = "src/index.ts" # Keeping .ts since you had it in the first block
 compatibility_date = "2024-04-01"
+
+[site]
+bucket = "./public" 
 
 [[d1_databases]]
 binding = "DB"
