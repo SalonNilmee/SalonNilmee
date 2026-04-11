@@ -1,142 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salon Nilmee | Luxury Experience</title>
+    <title>Salon Nilmee | Professional Artistry Since 2011</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { gold: '#c9a96e', darkGray: '#0f0f0f' } } }
+        }
+    </script>
     <style>
-        :root {
-            --gold: #d4af37;
-            --black: #0a0a0a;
-            --gray: #1a1a1a;
-        }
-
-        body {
-            background-color: var(--black);
-            color: white;
-            font-family: 'Playfair Display', serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
-
-        /* The Gold Border "Fortress" Box */
-        .card {
-            background-color: var(--gray);
-            border: 1px solid var(--gold);
-            padding: 3rem;
-            text-align: center;
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            max-width: 400px;
-            width: 90%;
-            transition: transform 0.3s ease;
-        }
-
-        h1 {
-            color: var(--gold);
-            letter-spacing: 0.5rem;
-            text-transform: uppercase;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 2rem;
-            letter-spacing: 0.1rem;
-        }
-
-        input {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #444;
-            color: white;
-            padding: 0.8rem;
-            width: 100%;
-            margin-bottom: 1.5rem;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        input:focus {
-            border-bottom: 1px solid var(--gold);
-        }
-
-        button {
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 0.8rem 2rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.2rem;
-            transition: all 0.3s;
-        }
-
-        button:hover {
-            background: var(--gold);
-            color: var(--black);
-        }
-
-        #status {
-            margin-top: 1rem;
-            font-size: 0.8rem;
-        }
+        body { font-family: 'Jost', sans-serif; background-color: #0f0f0f; color: #e5e5e5; }
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(201, 169, 110, 0.1); }
+        .service-card { background: #1a1a1a; border: 1px solid rgba(201, 169, 110, 0.1); transition: all 0.5s ease; overflow: hidden; height: 100%; }
+        .service-card:hover { border-color: #c9a96e; transform: translateY(-8px); }
+        .star-btn { cursor: pointer; transition: transform 0.2s; }
+        #review-fields { display: none; }
     </style>
 </head>
-<body>
+<body class="overflow-x-hidden">
 
-    <div class="card">
-        <h1>Nilmee</h1>
-        <p>MEMBERS EXCLUSIVE ACCESS</p>
+    <nav class="fixed w-full z-50 px-8 py-6 flex justify-between items-center bg-black/90 backdrop-blur-md border-b border-white/5">
+        <a href="#" class="font-serif text-2xl tracking-[0.2em] uppercase text-gold">Salon <span class="text-white">Nilmee</span></a>
+        <div class="hidden lg:flex gap-8 text-[10px] uppercase tracking-[0.3em] font-medium items-center">
+            <a href="#history" class="hover:text-gold transition-colors">Our History</a>
+            <a href="#services-list" class="hover:text-gold transition-colors">Services</a>
+            <a href="#gallery" class="hover:text-gold transition-colors">Gallery</a>
+            <a href="#studio-reel" class="hover:text-gold transition-colors">The Reel</a> 
+            <a href="#reviews" class="hover:text-gold transition-colors">Reviews</a>
+            <a href="#contact" class="hover:text-gold transition-colors text-gold border border-gold/30 px-4 py-2">Contact</a>
+        </div>
+    </nav>
+
+    <section id="hero" class="relative min-h-screen flex items-center justify-center px-6">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover opacity-20 grayscale">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-darkGray"></div>
+        </div>
+        <div class="relative z-10 text-center max-w-4xl">
+            <h1 class="font-serif text-6xl md:text-9xl mb-6 text-white leading-tight">True Elegance <br><span class="italic font-light text-gold">Starts Here.</span></h1>
+            <p class="text-[10px] uppercase tracking-[1em] text-white/40 mb-12">Gampaha • Since 2011</p>
+            <a href="#services-list" class="bg-gold text-black px-12 py-5 uppercase text-[11px] tracking-[0.3em] font-bold hover:bg-white transition-all">Discover The Menu</a>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-32 px-6 bg-darkGray">
+        <div class="text-center mb-16">
+            <p class="text-gold text-[10px] tracking-[0.5em] uppercase mb-4">Portfolio</p>
+            <h2 class="font-serif text-5xl text-gold italic">Our Artistry</h2>
+        </div>
         
-        <input type="email" id="email" placeholder="ENTER YOUR EMAIL" required>
-        <button onclick="register()">Request Access</button>
-        
-        <div id="status"></div>
-    </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
+            <img src="https://i.imgur.com/7KqP9xL.jpeg" onclick="openLightbox(0)" class="w-full h-80 object-cover grayscale hover:grayscale-0 transition-all cursor-pointer border border-white/5">
+            <img src="https://i.imgur.com/vHqJ9S7.jpeg" onclick="openLightbox(1)" class="w-full h-80 object-cover grayscale hover:grayscale-0 transition-all cursor-pointer border border-white/5">
+            <img src="https://i.imgur.com/4q6Wf6Q.jpeg" onclick="openLightbox(2)" class="w-full h-80 object-cover grayscale hover:grayscale-0 transition-all cursor-pointer border border-white/5">
+            <img src="https://i.imgur.com/zW6pQvS.jpeg" onclick="openLightbox(3)" class="w-full h-80 object-cover grayscale hover:grayscale-0 transition-all cursor-pointer border border-white/5">
+            <img src="https://i.imgur.com/yF9WpY8.jpeg" onclick="openLightbox(4)" class="w-full h-80 object-cover grayscale hover:grayscale-0 transition-all cursor-pointer border border-white/5">
+            <img src="https://i.imgur.com/S8WpQxR.jpeg" onclick="openLightbox(5)" class="w-full h-80 object-cover grayscale hover:grayscale-0 transition-all cursor-pointer border border-white/5">
+        </div>
+    </section>
+
+    <section id="studio-reel" class="py-32 px-6 bg-black">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="font-serif text-5xl italic mb-16 text-white">Client <span class="text-gold">Transformations</span></h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center justify-center">
+                <div class="relative max-w-[340px] mx-auto rounded-3xl overflow-hidden border-[8px] border-white/5 aspect-[9/16] bg-black">
+                    <iframe class="absolute inset-0 w-full h-full" src="https://www.tiktok.com/embed/v2/7392678857121303815" allowfullscreen scrolling="no" allow="autoplay; encrypted-media;"></iframe>
+                </div>
+                <div class="glass p-6 rounded-2xl">
+                    <p class="text-gold uppercase text-[10px] tracking-widest mb-4 italic">Recent Feedback</p>
+                    <div class="bg-green-900/20 p-4 rounded-lg border border-green-500/20 text-left">
+                        <p class="text-sm italic">"Good morning akke. Haircut eka superb... next time mewagema kapanna."</p>
+                        <p class="text-[10px] text-white/40 mt-2">— Happy Client</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script>
-       async function register() {
-    const email = document.getElementById('email').value;
-    const status = document.getElementById('status');
-    
-    if(!email) return alert("Please enter your email");
-
-    status.innerText = "AUTHENTICATING...";
-    
-    try {
-        const response = await fetch('https://salon-backend.salonnilmi.workers.dev/api/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email })
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            // This is the "Magic" part - it changes the screen instantly
-            document.querySelector('.card').innerHTML = `
-                <h1>Welcome</h1>
-                <p style="color: #d4af37">MEMBER IDENTIFIED</p>
-                <div style="border: 1px dashed #d4af37; padding: 10px; margin: 20px 0;">
-                    <span style="font-size: 0.8rem; color: #888;">YOUR EXCLUSIVE PASS:</span><br>
-                    <strong style="font-size: 1.5rem; letter-spacing: 5px;">${data.key}</strong>
-                </div>
-                <button onclick="window.location.href='/gallery'">ENTER SALON</button>
-            `;
-        } else {
-            status.innerText = "Security check failed.";
-        }
-    } catch (err) {
-        status.innerText = "Connection Error.";
-    }
-}
+        // Updated Gallery Image Array
+        const galleryImages = [
+            "https://i.imgur.com/7KqP9xL.jpeg",
+            "https://i.imgur.com/vHqJ9S7.jpeg",
+            "https://i.imgur.com/4q6Wf6Q.jpeg",
+            "https://i.imgur.com/zW6pQvS.jpeg",
+            "https://i.imgur.com/yF9WpY8.jpeg",
+            "https://i.imgur.com/S8WpQxR.jpeg"
+        ];
+        // ... (Include previous lightbox and loadData functions here)
     </script>
 </body>
 </html>

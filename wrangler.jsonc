@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "alon--ite",
+  "main": "index.js", // This tells Wrangler to use your backend script
+  "compatibility_date": "2026-04-09",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "frontend"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB", // This MUST be "DB" to match your index.js code
+      "database_name": "salon-db",
+      "database_id": "46e4eb35-d598-44ba-9f9c-4e629642cdb8"
+    }
+  ]
+}
